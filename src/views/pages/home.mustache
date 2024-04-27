@@ -1,0 +1,21 @@
+{{>partials/header}}
+
+Opa, {{name }} {{lastName}}, tudo bem ?
+    {{#showOld}}
+      AIAIAI É MAIOR DE IDADE NE SAFADO
+    {{/showOld}}
+    {{^showOld}}
+    Você não é maior de IDADE.
+    {{/showOld}}
+
+    <hr/>
+
+    <h2> Produtos! </h2>
+    <ul>
+    {{#products}}
+        <li>{{title}} - R$ {{price}}</li>
+    {{/products}}
+    </ul>
+
+{{>partials/footer}}
+
