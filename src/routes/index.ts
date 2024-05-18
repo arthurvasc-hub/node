@@ -1,52 +1,13 @@
-import { Router, Request, Response } from 'express'
-
+import { Router } from 'express'
+import * as infoController from '../controllers/infoCotroller'
+import * as homeController from '../controllers/homeController'
+import * as userController from '../controllers/userController'
 const router = Router();
 
-router.get('/', (req: Request, res: Response) =>{
-  let age: number = 15;
-  let showOld: boolean = false;
-  if(age >= 18) {
-      showOld = true;
-  }
+router.get('/', homeController.home)
+router.get('/contato', infoController.contato )
+router.get('/sobre', infoController.sobre )
 
-  res.render('pages/home', {
-    name: 'Arthur',
-    lastName: 'Vasconcelos',
-    showOld,
-    products: [
-      {title: 'Produto A', price: 10},
-      {title: 'Produto B', price: 15},
-      {title: 'Produto C', price: 20},
-    ]
-  });
-})
-
-router.get('/contato', (req: Request, res: Response)=>{
-  res.render('pages/contato')
-})
-
-router.get('/sobre', (req: Request, res: Response)=>{
-  res.render('pages/sobre')
-})
-
-router.get('/idade', (req: Request, res: Response) =>{
-  res.render('pages/idade')
-  
-});
-router.post('/idade',(req: Request, res: Response)=>{
-  let mostrarIdade: boolean = false;
-  let idade: number = 0;
-    if(req.body.ano){
-      let anoNascimento: number = parseInt(req.body.ano as string);
-      let anoAtual: number = new Date().getFullYear();
-      idade = anoAtual - anoNascimento;
-      mostrarIdade = true;
-    };
-  
-  
-  res.render('pages/idade', {
-    idade,
-    mostrarIdade
-  });
-});
+router.get('/idade', userController.idade );
+router.post('/idade', userController.idadeAction);
 export default router;

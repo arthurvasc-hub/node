@@ -17,5 +17,12 @@ Opa, {{name }} {{lastName}}, tudo bem ?
     {{/products}}
     </ul>
 
+    <h2> Produtos a partir de 15 reais</h2>
+    <ul>
+    {{#expensive}}
+        <li>{{title}} - R$ {{price}}</li>
+    {{/expensive}}
+    </ul>
+
 {{>partials/footer}}
 
