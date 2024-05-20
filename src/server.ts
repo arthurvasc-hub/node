@@ -4,6 +4,10 @@ import mustache from 'mustache-express'
 import mainRoutes  from './routes/index';
 import CtRouts from './routes/CT';
 import TrRouts from './routes/TR';
+import dotenv from 'dotenv'
+
+dotenv.config();
+
 const server = express();
 
 server.set('view engine', 'mustache');
@@ -25,4 +29,4 @@ server.use((req: Request, res: Response)=>{
 
 
 
-server.listen(80);
+server.listen(process.env.PORT);
